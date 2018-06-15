@@ -33,7 +33,7 @@ main() {
 		errx "cannot cd into '/tmp'"
 
 	echo "downloading '${url}/${parallel}'"
-	curl -s "${url}/${parallel}" -O || \
+	curl -m 10 -s "${url}/${parallel}" -O || \
 		errx "curl failed"
 
 	echo "unpacking '${parallel}'"

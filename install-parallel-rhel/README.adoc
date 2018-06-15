@@ -3,7 +3,7 @@
 
 == Description
 
-This script installs the latest GNU Parallel on RHEL/CentOS in `/usr/local/bin`.
+This script installs the latest GNU Parallel from `https://ftp.gnu.org/gnu/parallel` on RHEL/CentOS in `/usr/local/bin`.
 
 
 == Usage
