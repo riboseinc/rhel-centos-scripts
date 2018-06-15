@@ -1,0 +1,42 @@
+= set-hostname-ec2-rhel.sh
+
+
+== Description
+
+This script sets a hostname that automatically includes the instance-id on AWS EC2 running RHEL/CentOS 7.
+
+
+== Prerequisites
+
+1. An EC2 instance running RHEL/CentOS 7;
+2. Installed `curl`;
+3. Installed `systemd`.
+
+
+== Usage
+
+```sh
+sudo ./set-hostname-ec2-rhel.sh <name>
+```
+
+
+=== Example
+
+```sh
+[ec2-user@ip-172-31-27-222 ~]$ hostname
+ip-172-31-27-222.us-west-2.compute.internal
+[ec2-user@ip-172-31-27-222 ~]$ sudo ./set-hostname-ec2-rhel.sh test
+[ec2-user@ip-172-31-27-222 ~]$ hostname
+test-i-0dc5648222e4aec1e
+[ec2-user@ip-172-31-27-222 ~]$ bash
+[ec2-user@test-i-0dc5648222e4aec1e ~]$ cat /etc/sysconfig/network
+NETWORKING=yes
+NOZEROCONF=yes
+HOSTNAME=test-i-0dc5648222e4aec1e
+[ec2-user@test-i-0dc5648222e4aec1e ~]$ 
+```
+
+
+== Contributions
+
+Feel free to open an issue or to send a pull request.

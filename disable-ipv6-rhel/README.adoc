@@ -1,0 +1,62 @@
+= disable-ipv6-rhel.sh
+
+
+== Description
+
+Disables IPv6 on RHEL/CentOS with `GRUB_CMDLINE_LINUX="ipv6.disable=1"`
+
+
+== Usage
+
+```sh
+sudo ./disable-ipv6-rhel.sh
+```
+
+=== Example run
+
+```console
+[ec2-user@ip-172-31-32-65 ~]$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9001 qdisc pfifo_fast state UP qlen 1000
+    link/ether 06:d3:6b:b3:0e:62 brd ff:ff:ff:ff:ff:ff
+    inet 172.31.32.65/20 brd 172.31.47.255 scope global dynamic eth0
+       valid_lft 3121sec preferred_lft 3121sec
+    inet6 fe80::4d3:6bff:feb3:e62/64 scope link
+       valid_lft forever preferred_lft forever
+[ec2-user@ip-172-31-32-65 ~]$ sudo ./disable-ipv6-rhel.sh
+adding 'ipv6.disable=1' to GRUB_CMDLINE_LINUX in '/etc/default/grub'
+setting 'GRUB_DEFAULT' to '0'
+running: 'grub2-mkconfig -o /boot/grub2/grub.cfg'
+Generating grub configuration file ...
+Found linux image: /boot/vmlinuz-3.10.0-123.20.1.el7.x86_64
+Found initrd image: /boot/initramfs-3.10.0-123.20.1.el7.x86_64.img
+Found linux image: /boot/vmlinuz-0-rescue-152756be08b849d690e628f517296ee1
+Found initrd image: /boot/initramfs-0-rescue-152756be08b849d690e628f517296ee1.img
+done
+[ec2-user@ip-172-31-32-65 ~]$
+```
+
+After reboot:
+
+```console
+[ec2-user@ip-172-31-32-65 ~]$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9001 qdisc pfifo_fast state UP qlen 1000
+    link/ether 06:d3:6b:b3:0e:62 brd ff:ff:ff:ff:ff:ff
+    inet 172.31.32.65/20 brd 172.31.47.255 scope global dynamic eth0
+       valid_lft 3598sec preferred_lft 3598sec
+[ec2-user@ip-172-31-32-65 ~]$
+```
+
+
+== Contributions
+
+Feel free to open an issue or to send a pull request.

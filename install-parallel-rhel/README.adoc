@@ -1,0 +1,18 @@
+= install-parallel-rhel.sh
+
+
+== Description
+
+This script installs the latest GNU Parallel on RHEL/CentOS in `/usr/local/bin`.
+
+
+== Usage
+
+```sh
+sudo ./install-parallel-rhel.sh
+```
+
+
+== Contributions
+
+Feel free to open an issue or to send a pull request.

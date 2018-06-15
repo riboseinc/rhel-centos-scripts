@@ -1,0 +1,18 @@
+= set-timezone-rhel.sh
+
+
+== Description
+
+Sets the timezone on RHEL/CentOS in '/etc/localtime' and in '/etc/profile.d/'.
+
+
+== Usage
+
+```sh
+sudo ./set-timezone-rhel.sh <timezone>
+```
+
+
+== Contributions
+
+Feel free to open an issue or to send a pull request.

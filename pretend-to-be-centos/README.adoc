@@ -33,7 +33,7 @@ pretend-to-be-centos.sh: system now identifies as: 'CentOS Linux 7 (Core)'
 
 ```console
 # ./pretend-to-be-centos.sh disable
-# pretend-to-be-centos.sh: installing '/etc/os-release.bak' to '/etc/os-release'
+pretend-to-be-centos.sh: installing '/etc/os-release.bak' to '/etc/os-release'
 ```
 
 

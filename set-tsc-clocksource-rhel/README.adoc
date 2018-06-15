@@ -1,0 +1,54 @@
+= set-tsc-clocksource-rhel.sh
+
+
+== Description
+
+Amazon advises on current generation AWS EC2 instances running RHEL/CentOS to use TSC as the clocksource.
+
+This script sets `GRUB_CMDLINE_LINUX="clocksource=tsc"` and then executes `grub2-mkconfig`
+
+Sources:
+
+1. https://www.slideshare.net/AmazonWebServices/deep-dive-on-delivering-amazon-ec2-instance-performance (slide 23)
+2. https://www.slideshare.net/AmazonWebServices/aws-reinvent-2016-deep-dive-on-amazon-ec2-instances-featuring-performance-optimization-best-practices-cmp301 (slide 20)
+
+
+== Usage
+
+```sh
+sudo ./set-tsc-clocksource-rhel.sh
+```
+
+
+=== Example run
+
+```console
+[ec2-user@ip-172-31-32-65 ~]$ cat /sys/devices/system/clocksource/clocksource0/current_clocksource
+xen
+[ec2-user@ip-172-31-32-65 ~]$ grep GRUB_CMDLINE_LINUX /etc/default/grub
+GRUB_CMDLINE_LINUX="vconsole.keymap=us console=ttyS0,115200n8 console=tty0 crashkernel=auto  vconsole.font=latarcyrheb-sun16"
+[ec2-user@ip-172-31-32-65 ~]$ sudo ./set-tsc-clocksource-rhel.sh
+adding: 'clocksource=tsc' to 'GRUB_CMDLINE_LINUX=' in '/etc/default/grub'
+setting: 'GRUB_DEFAULT' to '0' in '/etc/default/grub'
+running: 'grub2-mkconfig -o /boot/grub2/grub.cfg'
+Generating grub configuration file ...
+Found linux image: /boot/vmlinuz-3.10.0-123.20.1.el7.x86_64
+Found initrd image: /boot/initramfs-3.10.0-123.20.1.el7.x86_64.img
+Found linux image: /boot/vmlinuz-0-rescue-152756be08b849d690e628f517296ee1
+Found initrd image: /boot/initramfs-0-rescue-152756be08b849d690e628f517296ee1.img
+done
+[ec2-user@ip-172-31-32-65 ~]$ grep GRUB_CMDLINE_LINUX /etc/default/grub
+GRUB_CMDLINE_LINUX="clocksource=tsc vconsole.keymap=us console=ttyS0,115200n8 console=tty0 crashkernel=auto  vconsole.font=latarcyrheb-sun16"
+```
+
+After reboot:
+
+```console
+[ec2-user@ip-172-31-32-65 ~]$ cat /sys/devices/system/clocksource/clocksource0/current_clocksource
+tsc
+```
+
+
+== Contributions
+
+Feel free to open an issue or to send a pull request.

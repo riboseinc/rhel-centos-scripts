@@ -1,0 +1,67 @@
+= remove-old-kernels-rhel.sh
+
+
+== Description
+
+OpenSCAP CVE scanning on RHEL reports vulnerabilities in older kernels even if they are no longer used.
+
+See: https://bugzilla.redhat.com/show_bug.cgi?id=1304511
+
+Use this script to remove old kernels on RHEL (it will also work on CentOS) even when the machine is running the non-latest kernel.
+After removal of the old kernels this script will regenerate the GRUB2 menu.
+
+
+== Usage
+
+```sh
+sudo ./remove-old-kernels-rhel.sh
+```
+
+
+=== Example
+
+```console
+[ec2-user@ip-172-31-27-222 ~]$ uname -a
+Linux ip-172-31-27-222 3.10.0-693.11.6.el7.x86_64 #1 SMP Thu Jan 4 01:06:37 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+[ec2-user@ip-172-31-27-222 ~]$ rpm -q kernel
+kernel-3.10.0-693.11.6.el7.x86_64
+kernel-3.10.0-862.3.2.el7.x86_64
+[ec2-user@ip-172-31-27-222 ~]$ cat /etc/redhat-release 
+CentOS Linux release 7.4.1708 (Core)
+[ec2-user@ip-172-31-27-222 ~]$ sudo grep " /boot/vmlinuz-3.10" /boot/grub2/grub.cfg
+	linux16 /boot/vmlinuz-3.10.0-862.3.2.el7.x86_64 root=UUID=d90808a6-930e-48e0-95a1-e44beb3820a4 ro clocksource=tsc ipv6.disable=1 console=tty0 crashkernel=auto console=ttyS0,115200 LANG=en_US.UTF-8
+	linux16 /boot/vmlinuz-3.10.0-693.11.6.el7.x86_64 root=UUID=d90808a6-930e-48e0-95a1-e44beb3820a4 ro clocksource=tsc ipv6.disable=1 console=tty0 crashkernel=auto console=ttyS0,115200
+	linux /boot/vmlinuz-3.10.0-693.11.6.el7.x86_64 ro root=UUID=d90808a6-930e-48e0-95a1-e44beb3820a4 console=hvc0 LANG=en_US.UTF-8
+		linux /boot/vmlinuz-3.10.0-693.11.6.el7.x86_64 ro root=UUID=d90808a6-930e-48e0-95a1-e44beb3820a4 console=hvc0 LANG=en_US.UTF-8
+[ec2-user@ip-172-31-27-222 ~]$ sudo ./remove-old-kernels-rhel.sh
+removing: 'kernel-3.10.0-693.11.6.el7.x86_64'
+running: 'grub2-mkconfig -o /boot/grub2/grub.cfg'
+Generating grub configuration file ...
+Found linux image: /boot/vmlinuz-3.10.0-862.3.2.el7.x86_64
+Found initrd image: /boot/initramfs-3.10.0-862.3.2.el7.x86_64.img
+Found linux image: /boot/vmlinuz-0-rescue-f32e0af35637b5dfcbedcb0a1de8dca1
+Found initrd image: /boot/initramfs-0-rescue-f32e0af35637b5dfcbedcb0a1de8dca1.img
+done
+[ec2-user@ip-172-31-27-222 ~]$ sudo grep " /boot/vmlinuz-3.10" /boot/grub2/grub.cfg
+	linux16 /boot/vmlinuz-3.10.0-862.3.2.el7.x86_64 root=UUID=d90808a6-930e-48e0-95a1-e44beb3820a4 ro clocksource=tsc ipv6.disable=1 console=tty0 crashkernel=auto console=ttyS0,115200 
+```
+
+OpenSCAP CVE scanning will no longer report any kernel related vulnerabilities.
+
+Now reboot for the lastest kernel to take effect:
+
+```sh
+[ec2-user@ip-172-31-27-222 ~]$ sudo reboot
+```
+
+Post-reboot:
+
+```sh
+[ec2-user@ip-172-31-27-222 ~]$ uname -a
+Linux ip-172-31-27-222 3.10.0-862.3.2.el7.x86_64 #1 SMP Mon May 21 23:36:36 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+```
+
+
+== Contributions
+
+Feel free to open an issue or to send a pull request.

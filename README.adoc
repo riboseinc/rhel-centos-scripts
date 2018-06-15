@@ -3,7 +3,7 @@
 
 == Description
 
-This repository contains several bash scripts for RHEL/CentOS
+This repository contains several bash scripts for RHEL/CentOS used for easier administration or setup purposes.
 
 
 === download-centos-rpm
@@ -21,6 +21,42 @@ Use the `pretend-to-be-centos.sh` script to have your RHEL setup mimic CentOS by
 === unpack-rpm
 
 The `unpack-rpm.sh` script unpacks a RPM or extracts a single file from a RPM.
+
+
+=== set-hostname-ec2-rhel
+
+The `set-hostname-ec2-rhel.sh` script sets a hostname that automatically includes the instance-id on AWS EC2 running RHEL/CentOS 7.
+
+
+=== set-timezone-rhel
+
+The `set-timezone-rhel.sh` script sets the timezone on RHEL/CentOS in `/etc/localtime` and in `/etc/profile.d/`.
+
+
+=== remove-old-kernels-rhel
+
+OpenSCAP CVE scanning on RHEL reports vulnerabilities in older kernels even if they are no longer used.
+
+See: https://bugzilla.redhat.com/show_bug.cgi?id=1304511
+
+Use the `remove-old-kernels-rhel.sh` script to remove old kernels on RHEL (it will also work on CentOS) even when the machine is running the non-latest kernel. After removal of the old kernels this script will regenerate the GRUB2 menu.
+
+
+=== disable-ipv6-rhel
+
+The `disable-ipv6-rhel.sh` script disables IPv6 on RHEL/CentOS.
+
+
+=== set-tsc-clocksource-rhel
+
+Amazon advises on current generation AWS EC2 instances running RHEL/CentOS to use TSC as the clocksource.
+
+The `set-tsc-clocksource-rhel` script sets `GRUB_CMDLINE_LINUX="clocksource=tsc"` and then executes `grub2-mkconfig`
+
+
+=== install-parallel-rhel
+
+The `install-parallel-rhel.sh` script installs the latest GNU Parallel on RHEL/CentOS in `/usr/local/bin`.
 
 
 == Contributions
