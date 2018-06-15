@@ -61,10 +61,10 @@ The `install-parallel-rhel.sh` script installs the latest GNU Parallel on RHEL/C
 
 == Installation
 
-Run `install.sh` or execute the following from the root of this repository:
+Execute:
 
 ```sh
-find . -name *.sh | while read bin; do install -m 0755 -o root -g root "${bin}" /usr/local/bin; done
+sudo ./install.sh
 ```
 
 
