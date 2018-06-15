@@ -1,0 +1,67 @@
+= unpack-rpm.sh
+
+
+== Description
+
+This script unpacks a RPM or extracts a file from a RPM.
+
+
+== Usage
+
+```sh
+./unpack-rpm.sh <rpm> <destination> [file]
+```
+
+
+=== Example use to unpack a RPM:
+
+```console
+$ ./unpack-rpm.sh centos-release-7-5.1804.el7.centos.x86_64.rpm /tmp
+unpack-rpm.sh: file '/tmp/etc/centos-release' created
+unpack-rpm.sh: file '/tmp/etc/centos-release-upstream' created
+unpack-rpm.sh: file '/tmp/etc/issue' created
+unpack-rpm.sh: file '/tmp/etc/issue.net' created
+unpack-rpm.sh: file '/tmp/etc/os-release' created
+unpack-rpm.sh: file '/tmp/etc/pki/rpm-gpg' created
+unpack-rpm.sh: file '/tmp/etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7' created
+unpack-rpm.sh: file '/tmp/etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-Debug-7' created
+unpack-rpm.sh: file '/tmp/etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-Testing-7' created
+unpack-rpm.sh: file '/tmp/etc/centos-release' created
+unpack-rpm.sh: file '/tmp/etc/rpm/macros.dist' created
+unpack-rpm.sh: file '/tmp/etc/centos-release' created
+unpack-rpm.sh: file '/tmp/etc/system-release-cpe' created
+unpack-rpm.sh: file '/tmp/etc/yum.repos.d/CentOS-Base.repo' created
+unpack-rpm.sh: file '/tmp/etc/yum.repos.d/CentOS-CR.repo' created
+unpack-rpm.sh: file '/tmp/etc/yum.repos.d/CentOS-Debuginfo.repo' created
+unpack-rpm.sh: file '/tmp/etc/yum.repos.d/CentOS-Media.repo' created
+unpack-rpm.sh: file '/tmp/etc/yum.repos.d/CentOS-Sources.repo' created
+unpack-rpm.sh: file '/tmp/etc/yum.repos.d/CentOS-Vault.repo' created
+unpack-rpm.sh: file '/tmp/etc/yum.repos.d/CentOS-fasttrack.repo' created
+unpack-rpm.sh: file '/tmp/etc/yum/vars/infra' created
+unpack-rpm.sh: file '/tmp/usr/lib/systemd/system-preset/85-display-manager.preset' created
+unpack-rpm.sh: file '/tmp/usr/lib/systemd/system-preset/90-default.preset' created
+unpack-rpm.sh: file '/tmp/usr/share/centos-release/EULA' created
+unpack-rpm.sh: file '/tmp/usr/share/doc/centos-release/Contributors' created
+unpack-rpm.sh: file '/tmp/usr/share/doc/centos-release/GPL' created
+unpack-rpm.sh: file '/tmp/usr/share/doc/centos-release' created
+unpack-rpm.sh: file '/tmp/usr/share/centos-release' created
+```
+
+
+=== Example use to extract a single file from a RPM:
+
+```console
+$ ./unpack-rpm.sh centos-release-7-5.1804.el7.centos.x86_64.rpm /tmp /etc/os-release
+unpack-rpm.sh: file '/tmp/etc/os-release' created
+```
+
+
+=== Prerequisites
+
+1. Installed `rpm2cpio`;
+2. Installed `cpio`.
+
+
+== Contributions
+
+Feel free to open an issue or to send a pull request.

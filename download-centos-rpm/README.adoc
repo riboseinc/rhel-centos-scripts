@@ -1,0 +1,94 @@
+=  download-centos-rpm.sh
+
+
+== Description
+
+This script for CentOS and RHEL is used to download CentOS RPMs from `os` and `extras`.
+
+The major version for the CentOS mirror URL is automagically determined by checking `/etc/os-release`.
+
+
+== Usage
+
+```sh
+./download-centos-rpm.sh <rpm name> <destination>
+```
+
+
+=== Example use
+
+```console
+$ ./download-centos-rpm.sh centos-release-7 .
+download-centos-rpm.sh: checking 'http://mirror.centos.org/centos/7/os/x86_64/Packages/' for 'centos-release-7'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/os/x86_64/Packages/centos-release-7-5.1804.el7.centos.x86_64.rpm' to '.'
+download-centos-rpm.sh: checking 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/' for 'centos-release-7'
+```
+
+```console
+$ ./download-centos-rpm.sh centos-release .
+download-centos-rpm.sh: checking 'http://mirror.centos.org/centos/7/os/x86_64/Packages/' for 'centos-release'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/os/x86_64/Packages/centos-release-7-5.1804.el7.centos.x86_64.rpm' to '.'
+download-centos-rpm.sh: checking 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/' for 'centos-release'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-ceph-hammer-1.0-5.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-ceph-jewel-1.0-1.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-ceph-luminous-1.0-1.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-configmanagement-1-1.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-dotnet-1-1.el7.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-fdio-1.0-2.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-gluster310-1.0-1.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-gluster312-1.0-1.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-gluster313-1.0-1.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-gluster40-1.0-2.el7.centos.x86_64.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-nfv-common-1-1.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-openshift-origin-1-1.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-openshift-origin13-1-1.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-openshift-origin14-1-1.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-openshift-origin15-1-1.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-openshift-origin36-1-1.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-openshift-origin37-1-1.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-openshift-origin39-1-1.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-openstack-ocata-1-2.el7.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-openstack-pike-1-1.el7.x86_64.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-openstack-queens-1-1.el7.centos.x86_64.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-opstools-1-7.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-ovirt42-1.0-1.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-ovirt42-1.0-2.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-paas-common-1-1.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-qemu-ev-1.0-2.el7.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-qemu-ev-1.0-3.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-scl-2-2.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-scl-rh-2-2.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-storage-common-1-2.el7.centos.noarch.rpm to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-virt-common-1-1.el7.centos.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-xen-46-8-3.el7.x86_64.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-xen-48-8-3.el7.x86_64.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-xen-8-3.el7.x86_64.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-xen-common-8-3.el7.x86_64.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/centos-release-yum4-1-2.el7.centos.noarch.rpm' to '.'
+```
+
+```console
+$ ./download-centos-rpm.sh kernel .
+download-centos-rpm.sh: checking 'http://mirror.centos.org/centos/7/os/x86_64/Packages/' for 'kernel'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/os/x86_64/Packages/kernel-3.10.0-862.el7.x86_64.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/os/x86_64/Packages/kernel-abi-whitelists-3.10.0-862.el7.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/os/x86_64/Packages/kernel-debug-3.10.0-862.el7.x86_64.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/os/x86_64/Packages/kernel-debug-devel-3.10.0-862.el7.x86_64.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/os/x86_64/Packages/kernel-devel-3.10.0-862.el7.x86_64.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/os/x86_64/Packages/kernel-doc-3.10.0-862.el7.noarch.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/os/x86_64/Packages/kernel-headers-3.10.0-862.el7.x86_64.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/os/x86_64/Packages/kernel-tools-3.10.0-862.el7.x86_64.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/os/x86_64/Packages/kernel-tools-libs-3.10.0-862.el7.x86_64.rpm' to '.'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/os/x86_64/Packages/kernel-tools-libs-devel-3.10.0-862.el7.x86_64.rpm' to '.'
+download-centos-rpm.sh: checking 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/' for 'kernel'
+```
+
+
+=== Prerequisites
+
+1. Installed `curl`.
+
+
+== Contributions
+
+Feel free to open an issue or to send a pull request.

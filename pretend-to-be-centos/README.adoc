@@ -1,0 +1,42 @@
+= pretend-to-be-centos.sh
+
+== Description
+
+Some RPMs or scripts only support CentOS and make installing them on RHEL impossible.
+Use this script to have your RHEL setup mimic CentOS by installing a CentOS `/etc/os-release`.
+
+
+== Usage
+
+```sh
+./pretend-to-be-centos.sh <enable|disable>
+```
+
+
+=== Example enable:
+
+```console
+# ./pretend-to-be-centos.sh enable
+pretend-to-be-centos.sh: system identies as 'Red Hat Enterprise Linux Server 7.5 (Maipo)'
+download-centos-rpm.sh: checking 'http://mirror.centos.org/centos/7/os/x86_64/Packages/' for 'centos-release-7'
+download-centos-rpm.sh: downloading 'http://mirror.centos.org/centos/7/os/x86_64/Packages/centos-release-7-5.1804.el7.centos.x86_64.rpm' to '/tmp/tmp.YEA4uDAVqm'
+download-centos-rpm.sh: checking 'http://mirror.centos.org/centos/7/extras/x86_64/Packages/' for 'centos-release-7'
+pretend-to-be-centos.sh: unpacking '/tmp/tmp.YEA4uDAVqm/centos-release-7-5.1804.el7.centos.x86_64.rpm'
+unpack-rpm.sh: file '/tmp/tmp.YEA4uDAVqm/etc/os-release' created
+pretend-to-be-centos.sh: installing '/etc/os-release' to '/etc/os-release.bak'
+pretend-to-be-centos.sh: installing '/tmp/tmp.YEA4uDAVqm//etc/os-release' to '/etc/os-release'
+pretend-to-be-centos.sh: system now identifies as: 'CentOS Linux 7 (Core)'
+```
+
+
+=== Example disable:
+
+```console
+# ./pretend-to-be-centos.sh disable
+# pretend-to-be-centos.sh: installing '/etc/os-release.bak' to '/etc/os-release'
+```
+
+
+== Contributions
+
+Feel free to open an issue or to send a pull request.

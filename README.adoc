@@ -1,0 +1,28 @@
+= rhel-centos-scripts
+
+
+== Description
+
+This repository contains several bash scripts for RHEL/CentOS
+
+
+=== download-centos-rpm
+
+The `download-centos-rpm.sh` script for CentOS and RHEL is used to download CentOS RPMs from `os` and `extras`.
+The major version for the CentOS mirror URL is automagically determined by checking `/etc/os-release`.
+
+
+=== pretend-to-be-centos
+
+Some RPMs or scripts only support CentOS and make installing them on RHEL impossible.
+Use the `pretend-to-be-centos.sh` script to have your RHEL setup mimic CentOS by installing a CentOS `/etc/os-release`.
+
+
+=== unpack-rpm
+
+The `unpack-rpm.sh` script unpacks a RPM or extracts a single file from a RPM.
+
+
+== Contributions
+
+Feel free to open an issue or to send a pull request.
