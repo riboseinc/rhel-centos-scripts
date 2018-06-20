@@ -59,6 +59,11 @@ The `set-tsc-clocksource-rhel` script sets `GRUB_CMDLINE_LINUX="clocksource=tsc"
 The `install-parallel-rhel.sh` script installs the latest GNU Parallel on RHEL/CentOS in `/usr/local/bin`.
 
 
+=== rhel-vulnerability-scan
+
+The `rhel-vulnerability-scan.sh` performs a vulnerability scan on RHEL 7 using OpenSCAP
+
+
 == Installation
 
 Execute:
