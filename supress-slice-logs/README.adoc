@@ -1,0 +1,30 @@
+= supress-slice-logs.sh
+
+
+== Description
+
+Use this script to disable slice floods on RHEL/CentOS 7
+
+```
+$ sudo tail -6 /var/log/messages
+Jul 24 08:50:01 example.com systemd: Created slice user-0.slice.
+Jul 24 08:50:01 example.com systemd: Starting Session 150 of user root.
+Jul 24 08:50:01 example.com systemd: Started Session 150 of user root.
+Jul 24 09:00:01 example.com systemd: Created slice user-0.slice.
+Jul 24 09:00:02 example.com systemd: Starting Session 151 of user root.
+Jul 24 09:00:02 example.com systemd: Started Session 151 of user root.
+```
+
+See: https://access.redhat.com/solutions/1564823
+
+
+== Usage
+
+```sh
+./supress-slice-logs.sh
+
+```
+
+== Contributions
+
+Feel free to open an issue or to send a pull request.
