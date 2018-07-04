@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# supress-slice-logs.sh by <ebo@>
+# suppress-slice-logs.sh by <ebo@>
 #
-# Use this script to disable slice floods on RHEL/CentOS 7
+# Use this script to suppress slice floods on RHEL/CentOS 7
 #
 # See: https://access.redhat.com/solutions/1564823
 
@@ -25,6 +25,7 @@ main() {
 		errx "cannot open '${rsyslogd}'"
 
 	local -r slicelog="${rsyslogd}/ignore-systemd-session-slice.conf"
+	echo "${__progname}: creating '${slicelog}'"
 	echo 'if $programname == "systemd" and ($msg contains "Starting Session" or $msg contains "Starting User Slice" or $msg contains "Started Session" or $msg contains "Created slice" or $msg contains "Starting user-" or $msg contains "Removed slice user" or $msg contains "Stopping user-" or $msg contains "Stopping User" or $msg contains "Removed slice User") then stop' > "${slicelog}"
 
 	return 0

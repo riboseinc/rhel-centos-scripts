@@ -1,4 +1,4 @@
-= supress-slice-logs.sh
+= suppress-slice-logs.sh
 
 
 == Description
@@ -21,7 +21,7 @@ See: https://access.redhat.com/solutions/1564823
 == Usage
 
 ```sh
-./supress-slice-logs.sh
+./suppress-slice-logs.sh
 
 ```
 
