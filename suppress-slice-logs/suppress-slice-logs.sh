@@ -5,6 +5,14 @@
 # Use this script to suppress slice floods on RHEL/CentOS 7
 #
 # See: https://access.redhat.com/solutions/1564823
+#
+# $ sudo tail -6 /var/log/messages
+# Jul 24 08:50:01 example.com systemd: Created slice user-0.slice.
+# Jul 24 08:50:01 example.com systemd: Starting Session 150 of user root.
+# Jul 24 08:50:01 example.com systemd: Started Session 150 of user root.
+# Jul 24 09:00:01 example.com systemd: Created slice user-0.slice.
+# Jul 24 09:00:02 example.com systemd: Starting Session 151 of user root.
+# Jul 24 09:00:02 example.com systemd: Started Session 151 of user root.
 
 set -ueo pipefail
 
@@ -21,7 +29,7 @@ main() {
 		errx "need root"
 
 	local -r rsyslogd="/etc/rsyslog.d"
-	[ ! -d "${rsyslogd} ] && \
+	[ ! -d "${rsyslogd}" ] && \
 		errx "cannot open '${rsyslogd}'"
 
 	local -r slicelog="${rsyslogd}/ignore-systemd-session-slice.conf"
