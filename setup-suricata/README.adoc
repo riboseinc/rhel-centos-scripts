@@ -1,0 +1,25 @@
+= setup-suricata.sh
+
+
+== Description
+
+This script sets up Suricata IDS for RHEL/CentOS 7 on AWS EC2
+
+It does the following:
+
+1. Configures rsyslog to monitor Suricata detections in `/var/log/suricata/fast.log`
+2. Creates a `bpf-filter` to ignore AWS EC2 metadata (`169.254.169.254`) connections
+3. Configures Suricata to only log detections
+4. Configures Suricata to disable unix sockets
+5. Downloads all the default rule sets from https://rules.emergingthreats.net/open/suricata/rules 
+
+
+== Usage
+
+```sh
+./setup-suricata.sh
+```
+
+== Contributions
+
+Feel free to open an issue or to send a pull request.
