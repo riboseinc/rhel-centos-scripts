@@ -8,29 +8,29 @@ This repository contains several bash scripts for RHEL/CentOS used for easier ad
 
 === download-centos-rpm
 
-The `download-centos-rpm.sh` script for CentOS and RHEL is used to download CentOS RPMs from `os` and `extras`.
+The https://github.com/riboseinc/rhel-centos-scripts/tree/master/download-centos-rpm[download-centos-rpm.sh] script for CentOS and RHEL is used to download CentOS RPMs from `os` and `extras`.
 The major version for the CentOS mirror URL is automagically determined by checking `/etc/os-release`.
 
 
 === pretend-to-be-centos
 
 Some RPMs or scripts only support CentOS and make installing them on RHEL impossible.
-Use the `pretend-to-be-centos.sh` script to have your RHEL setup mimic CentOS by installing a CentOS `/etc/os-release`.
+Use the https://github.com/riboseinc/rhel-centos-scripts/tree/master/pretend-to-be-centos[pretend-to-be-centos.sh] script to have your RHEL setup mimic CentOS by installing a CentOS `/etc/os-release`.
 
 
 === unpack-rpm
 
-The `unpack-rpm.sh` script unpacks a RPM or extracts a single file from a RPM.
+The https://github.com/riboseinc/rhel-centos-scripts/tree/master/unpack-rpm[unpack-rpm.sh] script unpacks a RPM or extracts a single file from a RPM.
 
 
 === set-hostname-ec2-rhel
 
-The `set-hostname-ec2-rhel.sh` script sets a hostname that automatically includes the instance-id on AWS EC2 running RHEL/CentOS 7.
+The https://github.com/riboseinc/rhel-centos-scripts/tree/master/set-hostname-ec2-rhel[set-hostname-ec2.sh] script sets a hostname that automatically includes the instance-id on AWS EC2 running RHEL/CentOS 7.
 
 
 === set-timezone-rhel
 
-The `set-timezone-rhel.sh` script sets the timezone on RHEL/CentOS in `/etc/localtime` and in `/etc/profile.d/`.
+The https://github.com/riboseinc/rhel-centos-scripts/tree/master/set-timezone-rhel[set-timezone-rhel.sh] script sets the timezone on RHEL/CentOS in `/etc/localtime` and in `/etc/profile.d/`.
 
 
 === remove-old-kernels-rhel
@@ -39,29 +39,39 @@ OpenSCAP CVE scanning on RHEL reports vulnerabilities in older kernels even if t
 
 See: https://bugzilla.redhat.com/show_bug.cgi?id=1304511
 
-Use the `remove-old-kernels-rhel.sh` script to remove old kernels on RHEL (it will also work on CentOS) even when the machine is running the non-latest kernel. After removal of the old kernels this script will regenerate the GRUB2 menu.
+Use the https://github.com/riboseinc/rhel-centos-scripts/tree/master/remove-old-kernels-rhel[remove-old-kernels.sh] script to remove old kernels on RHEL (it will also work on CentOS) even when the machine is running the non-latest kernel. After removal of the old kernels this script will regenerate the GRUB2 menu.
 
 
 === disable-ipv6-rhel
 
-The `disable-ipv6-rhel.sh` script disables IPv6 on RHEL/CentOS.
+The https://github.com/riboseinc/rhel-centos-scripts/tree/master/disable-ipv6-rhel[disable-ipv6-rhel.sh] script disables IPv6 on RHEL/CentOS.
 
 
 === set-tsc-clocksource-rhel
 
 Amazon advises on current generation AWS EC2 instances running RHEL/CentOS to use TSC as the clocksource.
 
-The `set-tsc-clocksource-rhel` script sets `GRUB_CMDLINE_LINUX="clocksource=tsc"` and then executes `grub2-mkconfig`
+The https://github.com/riboseinc/rhel-centos-scripts/tree/master/set-tsc-clocksource-rhel[set-tsc-clocksource-rhel.sh] script sets `GRUB_CMDLINE_LINUX="clocksource=tsc"` and then executes `grub2-mkconfig`
 
 
 === install-parallel-rhel
 
-The `install-parallel-rhel.sh` script installs the latest GNU Parallel on RHEL/CentOS in `/usr/local/bin`.
+The https://github.com/riboseinc/rhel-centos-scripts/tree/master/install-parallel-rhel[install-parallel-rhel.sh] script installs the latest GNU Parallel on RHEL/CentOS in `/usr/local/bin`.
 
 
 === rhel-vulnerability-scan
 
-The `rhel-vulnerability-scan.sh` performs a vulnerability scan on RHEL 7 using OpenSCAP
+The https://github.com/riboseinc/rhel-centos-scripts/tree/master/rhel-vulnerability-scan[rhel-vulnerability-scan.sh] script performs a vulnerability scan on RHEL 7 using OpenSCAP.
+
+
+=== setup-suricata
+
+The https://github.com/riboseinc/rhel-centos-scripts/tree/master/setup-suricata[setup-suricata.sh] script sets up Suricata IDS for RHEL/CentOS 7 on AWS EC2.
+
+
+=== suppress-slice-logs
+
+The https://github.com/riboseinc/rhel-centos-scripts/tree/master/suppress-slice-logs[suppress-slice-logs.sh] script is used to disable slice floods on RHEL/CentOS 7.
 
 
 == Installation

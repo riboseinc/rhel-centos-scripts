@@ -3,7 +3,7 @@
 
 == Description
 
-This script sets up Suricata IDS for RHEL/CentOS 7 on AWS EC2
+This script sets up https://suricata-ids.org/[Suricata IDS] for RHEL/CentOS 7 on AWS EC2
 
 It does the following:
 
