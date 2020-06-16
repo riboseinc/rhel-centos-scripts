@@ -91,7 +91,9 @@ centosenable() {
 	# 	errx "unpack-rpm.sh failed"
 	unpack-rpm.sh "${latestrelease}" "${tempdir}" "${osrelease}" || \
 		errx "unpack-rpm.sh failed"
-	pwd
+
+	local -r centosrelease="usr/lib/os-release"
+
 	ls -l "${tempdir}"
 	ls -l "${tempdir}${osrelease}"
 
@@ -99,11 +101,11 @@ centosenable() {
 	install -m 0644 -o root -g root -T "${osrelease}" "${osreleasebak}" || \
 		errx "install '${osrelease}' '${osreleasebak}' failed"
 
-	echo "${__progname}: installing '${tempdir}${osrelease}' to '${osrelease}'"
-	install -m 0644 -o root -g root -T "${tempdir}${osrelease}" "${osrelease}" || \
-		errx "install '$(pwd)${osrelease}' '${osrelease}' failed"
+	echo "${__progname}: installing '${tempdir}/${centosrelease}' to '${osrelease}'"
+	install -m 0644 -o root -g root -T "${tempdir}/${centosrelease}" "${osrelease}" || \
+		errx "install '${tempdir}/${centosrelease}' '${osrelease}' failed"
 
-	rm -rf "${tempdir}${osrelease}" "${latestrelease}"
+	rm -rf "${tempdir}/${centosrelease}" "${latestrelease}"
 
 	. "${osrelease}"
 
