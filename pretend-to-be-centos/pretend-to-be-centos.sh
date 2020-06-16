@@ -89,13 +89,13 @@ centosenable() {
 	echo "${__progname}: unpacking '${latestrelease}'"
 	# unpack-rpm.sh "${latestrelease}" "${tempdir}" "${osrelease}" || \
 	# 	errx "unpack-rpm.sh failed"
-	unpack-rpm.sh "${latestrelease}" "${tempdir}" "${osrelease}" || \
-		errx "unpack-rpm.sh failed"
+	unpack-rpm.sh "${latestrelease}" "${tempdir}" || \
+		errx "unpack-rpm.sh ${latestrelease} failed"
 
 	local -r centosrelease="usr/lib/os-release"
 
 	ls -l "${tempdir}"
-	ls -l "${tempdir}${osrelease}"
+	ls -l "${tempdir}/${centosrelease}"
 
 	echo "${__progname}: installing '${osrelease}' to '${osreleasebak}'"
 	install -m 0644 -o root -g root -T "${osrelease}" "${osreleasebak}" || \
