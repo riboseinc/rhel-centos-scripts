@@ -94,11 +94,11 @@ centosenable() {
 	install -m 0644 -o root -g root -T "${osrelease}" "${osreleasebak}" || \
 		errx "install '${osrelease}' '${osreleasebak}' failed"
 
-	echo "${__progname}: installing '${tempdir}/${osrelease}' to '${osrelease}'"
-	install -m 0644 -o root -g root -T "${tempdir}/${osrelease}" "${osrelease}" || \
-		errx "install '$(pwd)/${osrelease}' '${osrelease}' failed"
+	echo "${__progname}: installing '${tempdir}${osrelease}' to '${osrelease}'"
+	install -m 0644 -o root -g root -T "${tempdir}${osrelease}" "${osrelease}" || \
+		errx "install '$(pwd)${osrelease}' '${osrelease}' failed"
 
-	rm -rf "${tempdir}/${osrelease}" "${latestrelease}"
+	rm -rf "${tempdir}${osrelease}" "${latestrelease}"
 
 	. "${osrelease}"
 
