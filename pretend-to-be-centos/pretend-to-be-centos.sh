@@ -89,6 +89,7 @@ centosenable() {
 	echo "${__progname}: unpacking '${latestrelease}'"
 	unpack-rpm.sh "${latestrelease}" "${tempdir}" "${osrelease}" || \
 		errx "unpack-rpm.sh failed"
+	pwd
 	ls -l "${tempdir}"
 
 	echo "${__progname}: installing '${osrelease}' to '${osreleasebak}'"
