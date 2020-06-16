@@ -87,10 +87,13 @@ centosenable() {
 		errx "cannot find the '${package}' RPM in '${tempdir}'"
 
 	echo "${__progname}: unpacking '${latestrelease}'"
+	# unpack-rpm.sh "${latestrelease}" "${tempdir}" "${osrelease}" || \
+	# 	errx "unpack-rpm.sh failed"
 	unpack-rpm.sh "${latestrelease}" "${tempdir}" "${osrelease}" || \
 		errx "unpack-rpm.sh failed"
 	pwd
 	ls -l "${tempdir}"
+	ls -l "${tempdir}${osrelease}"
 
 	echo "${__progname}: installing '${osrelease}' to '${osreleasebak}'"
 	install -m 0644 -o root -g root -T "${osrelease}" "${osreleasebak}" || \
